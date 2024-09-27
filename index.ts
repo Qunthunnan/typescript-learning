@@ -232,3 +232,48 @@ function checkReadings(readings: typeof userReading): boolean {
 
 // basicPorts[0] = 225;
 // basicPorts.push(223)
+
+
+const fetchData = (url: string, method: "GET" | "POST"): void => {
+    console.log(url, method);
+}
+
+const reqOptions = {
+    url: 'https://google.com',
+    method: 'GET' as 'GET'
+}
+
+fetchData(reqOptions.url, reqOptions.method );
+
+const cornerOptions = {
+	url: 'https://google.com',
+	method: 'POST'
+}
+
+fetchData(cornerOptions.url, <"POST">cornerOptions.method)
+
+interface Project {
+	name: string,
+	projectBudget: number
+}
+
+interface Department {
+	name: string,
+	budget: number
+}
+
+const department: Department = {
+	name: 'qunth',
+	budget: 42422424
+}
+
+function transformDepartment(department: Department, budget: number): Project {
+	return {
+		name: department.name,
+		projectBudget: budget
+	}
+}
+
+const newProject = transformDepartment(department, 3000);
+
+
