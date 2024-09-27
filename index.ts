@@ -128,6 +128,35 @@ type ID = number | string;
 
 const protocol: Protocol = 'https';
 
+type Config = { protocol: Protocol, port: number}
+
+type Role = { role: string }
+
+type ConfigWithRole = Config & Role;
+
 const getAnimationStyleString = (animName: string, timingFunc: AnimationFunction = 'ease', duration: number, iterCount: number | 'infinite' ): string => {
 	return `${animName} ${timingFunc} ${duration} ${iterCount}`;
 }
+
+const serverConfig: Config = {
+	protocol: 'http',
+	port: 3004
+}
+
+const addConfig: Config = {
+	protocol: 'https',
+	port: 3343
+}
+
+const userConfig: ConfigWithRole = {
+	protocol: 'ftp',
+	port: 9999,
+	role: 'user'
+}
+
+function startServer({protocol, port}: {protocol: Protocol, port: number}): void {
+	console.log(`${protocol.toUpperCase()} server started on ${port} port`);
+}
+
+startServer(serverConfig);
+
