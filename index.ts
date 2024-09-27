@@ -73,26 +73,25 @@ const numMatrix: number[][] = [
 	[4, 5, 6],
 ];
 
-<<<<<<< HEAD
-const message: string | number = 5;
-=======
+// const message: string | number = 5;
 //union
 
 function getNumberOrString(value: string): string | number {
 	if (value.length > 3) {
-		return 'Більше 3';
+		return "Більше 3";
 	} else return 0;
 }
 
-const message: string | number = getNumberOrString('sfsfsf');
+const message: string | number = getNumberOrString("sfsfsf");
 
-function multiAction (data: string | number | number[]): void { 
-	if(typeof data === 'string')
-		console.log(data.toUpperCase());
-	if(typeof data === 'number')
-		console.log(data.toExponential());
-	if(Array.isArray(data)) {
-		console.log(data.reduce((i, k) => i + k), 10);
+function multiAction(data: string | number | number[]): void {
+	if (typeof data === "string") console.log(data.toUpperCase());
+	if (typeof data === "number") console.log(data.toExponential());
+	if (Array.isArray(data)) {
+		console.log(
+			data.reduce((i, k) => i + k),
+			10,
+		);
 	}
 }
 
@@ -101,22 +100,22 @@ function sameMethods(data: number[] | string): void {
 }
 
 function equalNarrow(first: number | string, second: number | boolean): void {
-	if(first === second) {
+	if (first === second) {
 		console.log(first.toFixed() + second * first);
 	}
 }
 
-function objectNarrow(data: {system: number} | {user: string} ): void {
-	if('system' in data) {
+function objectNarrow(data: { system: number } | { user: string }): void {
+	if ("system" in data) {
 		console.log(data.system.toFixed());
 	}
 
-	if('user' in data) {
+	if ("user" in data) {
 		console.log(data.user.length);
 	}
 }
 
-function objectIsInstanceOf(obj: {super: number} | Date) {
+function objectIsInstanceOf(obj: { super: number } | Date) {
 	if (obj instanceof Date) {
 		console.log(obj.getDate());
 	}
@@ -124,14 +123,62 @@ function objectIsInstanceOf(obj: {super: number} | Date) {
 
 //literal types, type alias
 
-type Protocol = 'https' | 'http' | 'ftp';
-type AnimationFunction = 'ease' | 'ease-out' | 'ease-in';
+type Protocol = "https" | "http" | "ftp";
+type AnimationFunction = "ease" | "ease-out" | "ease-in";
 type ID = number | string;
 
+const obj = {
+	supers: "sfsfsf",
+};
 
-const protocol: Protocol = 'https';
+const protocol: Protocol = "https";
 
-const getAnimationStyleString = (animName: string, timingFunc: AnimationFunction = 'ease', duration: number, iterCount: number | 'infinite' ): string => {
+const getAnimationStyleString = (
+	animName: string,
+	timingFunc: AnimationFunction = "ease",
+	duration: number,
+	iterCount: number | "infinite",
+): string => {
 	return `${animName} ${timingFunc} ${duration} ${iterCount}`;
+};
+
+// const unit = document.querySelector(".a");
+
+interface User {
+	readonly login: string;
+	password: string;
+	age: number;
+	addr?: string;
+	system: string | undefined;
 }
->>>>>>> d7122756929250a1fd6fe2ad8a9e841fc019789e
+
+const freezeUser: Readonly<User> = {
+	login: "liudmyla",
+	password: "sifhihfiwhfiw",
+	age: 24,
+	addr: "HFkskfi hsifw khwwfsa",
+	system: "sjfowww",
+};
+
+// freezeUser.password = 'sfsfsfss';
+
+const user: User = {
+	login: "qunthunnan",
+	password: "Jojfojoj",
+	age: 23,
+	system: undefined,
+};
+
+const dbAdress = "ksfhkshfssff";
+
+function sendData(data: User, dbAdress?: string): void {
+	console.log(data, dbAdress!.toLocaleLowerCase());
+}
+
+sendData(user, dbAdress);
+
+const basicPorts: readonly number[] = [3000, 3001, 3002];
+const basicStr: ReadonlyArray<string> = ["ssfjlf", "sfsfs", "ssss"];
+
+// basicPorts[0] = 225;
+// basicPorts.push(223)
