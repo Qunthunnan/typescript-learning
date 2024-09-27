@@ -212,5 +212,23 @@ sendData(user, dbAdress);
 const basicPorts: readonly number[] = [3000, 3001, 3002];
 const basicStr: ReadonlyArray<string> = ["ssfjlf", "sfsfs", "ssss"];
 
+
+const userReading = {
+	water: 3.45,
+	electricity: 14.2
+}
+
+function checkReadings(readings: typeof userReading): boolean {
+	const systemReadings = {
+		water: 3.45,
+		electricity: 14.2
+	}
+
+	if(readings.electricity === systemReadings.electricity && readings.water === systemReadings.water) {
+		return true;
+	} 
+	return false;
+}
+
 // basicPorts[0] = 225;
 // basicPorts.push(223)
