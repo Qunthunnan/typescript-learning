@@ -133,9 +133,9 @@ const obj = {
 
 const protocol: Protocol = "https";
 
-type Config = { protocol: Protocol, port: number}
+type Config = { protocol: Protocol; port: number };
 
-type Role = { role: string }
+type Role = { role: string };
 
 type ConfigWithRole = Config & Role;
 
@@ -144,22 +144,28 @@ type ConfigWithRole = Config & Role;
 // }
 
 const serverConfig: Config = {
-	protocol: 'http',
-	port: 3004
-}
+	protocol: "http",
+	port: 3004,
+};
 
 const addConfig: Config = {
-	protocol: 'https',
-	port: 3343
-}
+	protocol: "https",
+	port: 3343,
+};
 
 const userConfig: ConfigWithRole = {
-	protocol: 'ftp',
+	protocol: "ftp",
 	port: 9999,
-	role: 'user'
-}
+	role: "user",
+};
 
-function startServer({protocol, port}: {protocol: Protocol, port: number}): void {
+function startServer({
+	protocol,
+	port,
+}: {
+	protocol: Protocol;
+	port: number;
+}): void {
 	console.log(`${protocol.toUpperCase()} server started on ${port} port`);
 }
 
@@ -212,68 +218,101 @@ sendData(user, dbAdress);
 const basicPorts: readonly number[] = [3000, 3001, 3002];
 const basicStr: ReadonlyArray<string> = ["ssfjlf", "sfsfs", "ssss"];
 
-
 const userReading = {
 	water: 3.45,
-	electricity: 14.2
-}
+	electricity: 14.2,
+};
 
 function checkReadings(readings: typeof userReading): boolean {
 	const systemReadings = {
 		water: 3.45,
-		electricity: 14.2
-	}
+		electricity: 14.2,
+	};
 
-	if(readings.electricity === systemReadings.electricity && readings.water === systemReadings.water) {
+	if (
+		readings.electricity === systemReadings.electricity &&
+		readings.water === systemReadings.water
+	) {
 		return true;
-	} 
+	}
 	return false;
 }
 
 // basicPorts[0] = 225;
 // basicPorts.push(223)
 
-
 const fetchData = (url: string, method: "GET" | "POST"): void => {
-    console.log(url, method);
-}
+	console.log(url, method);
+};
 
 const reqOptions = {
-    url: 'https://google.com',
-    method: 'GET' as 'GET'
-}
+	url: "https://google.com",
+	method: "GET" as "GET",
+};
 
-fetchData(reqOptions.url, reqOptions.method );
+fetchData(reqOptions.url, reqOptions.method);
 
 const cornerOptions = {
-	url: 'https://google.com',
-	method: 'POST'
-}
+	url: "https://google.com",
+	method: "POST",
+};
 
-fetchData(cornerOptions.url, <"POST">cornerOptions.method)
+fetchData(cornerOptions.url, <"POST">cornerOptions.method);
 
 interface Project {
-	name: string,
-	projectBudget: number
+	name: string;
+	projectBudget: number;
 }
 
 interface Department {
-	name: string,
-	budget: number
+	name: string;
+	budget: number;
 }
 
 const department: Department = {
-	name: 'qunth',
-	budget: 42422424
-}
+	name: "qunth",
+	budget: 42422424,
+};
 
 function transformDepartment(department: Department, budget: number): Project {
 	return {
 		name: department.name,
-		projectBudget: budget
-	}
+		projectBudget: budget,
+	};
 }
 
 const newProject = transformDepartment(department, 3000);
 
+interface Square {
+	side: number;
+	area: number;
+}
 
+interface Rect {
+	a: number;
+	b: number;
+	area: number;
+}
+
+function calculateArea(side: number): Square;
+function calculateArea(a: number, b: number): Rect;
+function calculateArea(a: number, b?: number): Square | Rect {
+	if (b) {
+		const rect: Rect = {
+			a,
+			b,
+			area: a * b,
+		};
+
+		return rect;
+	} else {
+		const square: Square = {
+			side: a,
+			area: a * a,
+		};
+
+		return square;
+	}
+}
+
+calculateArea(32);
