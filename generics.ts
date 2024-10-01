@@ -85,3 +85,30 @@ const user: User<{ sister: string | null } & ParentsData> = {
 		sister: "Marichka",
 	},
 };
+
+class SuperUser<T, S> {
+	name: T;
+	age: S;
+	role: "superuser";
+
+	constructor(name: T, age: S) {
+		this.name = name;
+		this.age = age;
+		this.role = "superuser";
+	}
+}
+
+class SuperUserWithRoles<T> extends SuperUser<string, number> {
+	rules: T;
+	constructor(name: string, age: number, rules: T) {
+		super(name, age);
+		this.rules = rules;
+	}
+}
+
+const kyrylo = new SuperUser("Kyrylo", 23);
+
+const lname = "Liudmyla";
+const lage = "10";
+
+const liudmyla = new SuperUser<string, string>(lname, lage);
