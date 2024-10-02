@@ -19,13 +19,31 @@ interface Client {
 	timeLeft: string;
 }
 
+type ExClient = {
+	[key in keyof Client as key extends "timeLeft"
+		? "makeCallFor"
+		: key]: key extends "timeLeft" ? Date : Client[key];
+};
+
+type FurureClient = Partial<ExClient>;
+
 type ChangeField<Type, Field extends keyof Type, New extends string> = {
 	[key in keyof Type as key extends Field ? New : key]: Type[key];
 };
 
 type FutureClass = ChangeField<Class, "startsAt", "willStartsAt">;
 
-const fitnessClubCenter = {
+interface FitnessClub {
+	clubName: string;
+	location: string;
+	classes: Class[];
+	futureClasses: FutureClass[];
+	currClients: Client[];
+	futureClients: FurureClient[];
+	exClients: ExClient[];
+}
+
+const fitnessClubCenter: FitnessClub = {
 	clubName: "Fitness club Center",
 	location: "central ave. 45, 5th floor",
 	classes: [
@@ -92,3 +110,5 @@ const fitnessClubCenter = {
 		},
 	],
 };
+
+console.log(fitnessClubCenter);

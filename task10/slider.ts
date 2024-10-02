@@ -8,6 +8,15 @@ interface ISlider {
 	animationName?: string;
 }
 
+type CutstomSlider = Required<
+	Omit<
+		{
+			[key in keyof ISlider]: key extends "speed" ? number : ISlider[key];
+		},
+		"animationName"
+	>
+>;
+
 function createSlider({
 	container = "",
 	numberOfSlides = 1,
@@ -24,7 +33,7 @@ createSlider();
 // Необходимо типизировать объект настроек, который будет зависим
 // от интерфейса ISlider
 // Все поля в нем обязательны для заполнения
-const customSliderOptions = {
+const customSliderOptions: CutstomSlider = {
 	container: "id",
 	numberOfSlides: 4,
 	speed: 1100,
@@ -33,7 +42,7 @@ const customSliderOptions = {
 	arrows: true,
 };
 
-function createCustomSlider(options: any): void {
+function createCustomSlider(options: CutstomSlider): void {
 	if ("container" in options) {
 		console.log(options);
 	}
